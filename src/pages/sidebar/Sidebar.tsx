@@ -1,20 +1,17 @@
-import { Person } from '@mui/icons-material';
-import { Groups } from '@mui/icons-material';
-import { Settings } from '@mui/icons-material';
+import SidebarButton, {SidebarButtonIcons} from "./SidebarButton"
 
-const Sidebar = () => {
+type Props = {
+  view: string,
+  setView: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Sidebar = ({view, setView}: Props) => {
   return (
     <div className="w-16 h-full border-r-2 border-r-zinc-400 flex flex-col">
-      <button>
-        <Person />
-      </button>
-      <button>
-        <Groups />
-      </button>
+      <SidebarButton viewName="Contacts" currentView={view} hasFocus={false} icon={SidebarButtonIcons.Person} setView={setView}/>
+      <SidebarButton viewName="Groups" currentView={view} hasFocus={false} icon={SidebarButtonIcons.Groups} setView={setView}/>
       <div className="flex-1"></div>
-      <button>
-        <Settings />
-      </button>
+      <SidebarButton viewName="Settings" currentView={view} hasFocus={false} icon={SidebarButtonIcons.Settings} setView={setView}/>
     </div>
   )
 }
